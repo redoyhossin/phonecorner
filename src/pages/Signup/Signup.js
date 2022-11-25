@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -8,20 +8,22 @@ import { ContextAuth } from '../../Context/UseContext';
 const Signup = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const { signup } = useContext(ContextAuth);
+    const [signuperror, setSignuperror] = useState('')
+
 
     const Handlesignup = (data) => {
-        console.log(data)
-        
+        setSignuperror();
+
         signup(data.email, data.password)
             .then(result => {
                 const user = result.user;
                 console.log(user)
                 toast.success(' Sign up successfull');
 
-               
+
             }).catch(error => {
                 error(error.message)
-              
+                setSignuperror();
             })
 
     }
@@ -104,8 +106,11 @@ const Signup = () => {
 
                                     <input className='btn btn-secondary w-full' value="Create Account " type="submit" />
                                 </form>
+                                {
+                                    signuperror && <p className='text-red'> {signuperror} </p>
+                                }
 
-                                <p className='my-2'>Already a member?<Link className='text-primary font-semibold' >Sign In</Link></p>
+                                <p className='my-2'>Already a member?<Link to='/Signin' className='text-primary font-semibold' >Sign In</Link></p>
                                 <div className="flex flex-col w-full border-opacity-100 my-2">
                                     <div className="divider">OR</div>
                                 </div>

@@ -2,6 +2,7 @@ import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Main from '../MainLayout/Main';
 import Home from '../pages/Mainhome/Home/Home';
+import Signin from '../pages/Signin/Signin';
 import Signup from '../pages/Signup/Signup';
 
 const Router = ({ children }) => {
@@ -18,6 +19,10 @@ const Router = ({ children }) => {
                 {
                     path: '/Signup',
                     element:<Signup/>
+                },
+                {
+                    path: '/Signin',
+                    element:<Signin/>
                 }
                 
             ]

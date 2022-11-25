@@ -6,8 +6,10 @@ import { ToastContainer } from 'react-toastify';
 const App = () => {
   return (
     <div>
-      <ToastContainer/>
-      <Router/>
+      <ToastContainer
+        position='top-center'
+      />
+      <Router />
     </div>
   );
 };
