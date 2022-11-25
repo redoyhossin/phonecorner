@@ -24,7 +24,7 @@ const Router = ({ children }) => {
         }
     ])
     return (
-        <div>
+        <div className='container mx-auto px-3'>
             <RouterProvider router={router}>
                 {children}
             </RouterProvider>
