@@ -2,14 +2,17 @@ import React, { useState } from 'react';
 import { useContext } from 'react';
 import signins from '../../Assets/Form/signin.jpeg';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { ContextAuth } from '../../Context/UseContext';
 
 const Signin = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const { signin } = useContext(ContextAuth);
+    const { signin, signingoogle } = useContext(ContextAuth);
     const [signinerror, setSigninerror] = useState('');
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
 
 
 
@@ -19,14 +22,24 @@ const Signin = () => {
             .then(result => {
                 const user = result.user;
                 toast.success('Sign In successfull')
-
+                navigate(from, { replace: true })
             }).catch(error => {
                 console.log(error.message);
-                setSigninerror(error.message)
+                setSigninerror(error.message);
             })
     }
 
+    const handlegoogle = () => {
+        signingoogle()
+            .then(result => {
+                const user = result.user;
+                toast.success('login success')
+            }).catch(error => {
 
+                toast.error(error.message);
+                error(error.message);
+            })
+    }
 
     return (
         <div className='my-12'>
@@ -74,10 +87,6 @@ const Signin = () => {
 
                                             className="input input-bordered w-full " type="password" />
                                         {errors.password && <p className='text-red-600' role="alert">{errors.password?.message}</p>}
-                                        {
-                                            signinerror && <p className='text-red-800'> {signinerror} </p>
-                                        }
-
 
                                         <label className="label">
                                             <span className="label-text-alt font-bold">Forgot Password ?</span>
@@ -86,11 +95,14 @@ const Signin = () => {
 
                                     <input className='btn btn-accent w-full' value="Login" type="submit" />
                                 </form>
+                                {
+                                    signinerror && <p className='text-red-700'> {signinerror} </p>
+                                }
                                 <p className='my-2'>Not a member?<Link className='text-primary font-semibold' to='/Signup'>Sign up now</Link></p>
                                 <div className="flex flex-col w-full border-opacity-100 my-2">
                                     <div className="divider">OR</div>
                                 </div>
-                                <input className='btn btn-outline w-full' value="CONTINUE WITH GOOGLE" type="submit" />
+                                <input onClick={handlegoogle} className='btn btn-outline w-full' value="CONTINUE WITH GOOGLE" type="submit" />
                             </div>
                         </div>
                     </div>
