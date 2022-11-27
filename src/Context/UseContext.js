@@ -1,5 +1,5 @@
 import React from 'react';
-import { createUserWithEmailAndPassword, getAuth, GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, updateProfile } from 'firebase/auth';
+import { createUserWithEmailAndPassword, getAuth, GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 import { createContext } from 'react';
 import app from '../Firebase/Firebase.config';
 import { useState } from 'react';
@@ -23,9 +23,9 @@ const UseContext = ({ children }) => {
         return createUserWithEmailAndPassword(auth, email, password);
     };
 
-    const profileupdate = () => {
-        return updateProfile();
-    }
+    const profileupdate = (infouser) => {
+        return updateProfile(auth.currentUser, infouser);
+    };
 
     const signin = (email, password) => {
         setLodder(true);
@@ -34,18 +34,19 @@ const UseContext = ({ children }) => {
 
     const signingoogle = () => {
         setLodder(true);
-        return signInWithPopup(auth,googleprovider);
+        return signInWithPopup(auth, googleprovider);
     };
 
     const signingithub = () => {
         setLodder(true);
-        return signInWithPopup(auth,githubprovider);
-    }
+        return signInWithPopup(auth, githubprovider);
+    };
 
+   
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, cureentUser => {
-            setUser(cureentUser);
+        const unsubscribe = onAuthStateChanged(auth, currentUser => {
+            setUser(currentUser);
             setLodder(false);
 
         })

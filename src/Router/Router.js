@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Errorhandle from '../Errorhandle/Errorhandle';
 import Main from '../MainLayout/Main';
 import Home from '../pages/Mainhome/Home/Home';
+import RouterError from '../pages/Sharedpage/RouterError/RouterError';
 import Signin from '../pages/Signin/Signin';
 import Signup from '../pages/Signup/Signup';
 
@@ -11,6 +12,7 @@ const Router = ({ children }) => {
         {
             path: '/',
             element: <Main />,
+            errorElement:<RouterError/>,
             children: [
                 {
                     path: '/',

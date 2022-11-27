@@ -7,7 +7,7 @@ import { ContextAuth } from '../../Context/UseContext';
 
 const Signup = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const { signup, signingoogle, signingithub } = useContext(ContextAuth);
+    const { signup,profileupdate, signingoogle, signingithub } = useContext(ContextAuth);
     const [signuperror, setSignuperror] = useState('');
 
 
@@ -16,8 +16,20 @@ const Signup = () => {
         signup(data.email, data.password)
             .then(result => {
                 const user = result.user;
-                console.log(user)
                 toast.success(' Sign up successfull');
+
+
+                const infouser = {
+                    displayName: data.name
+                };
+
+                profileupdate(infouser)
+                    .then(() => {
+                    
+                    }).catch(err => console.log(err));
+
+
+
             }).catch(error => {
 
                 setSignuperror(error.message);
@@ -25,6 +37,9 @@ const Signup = () => {
             })
     };
 
+
+
+    
     const handlegoogle = () => {
         signingoogle()
             .then(result => {
