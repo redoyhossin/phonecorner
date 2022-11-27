@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import signups from '../../Assets/Form/signup.jpg'
 import { ContextAuth } from '../../Context/UseContext';
@@ -9,6 +9,9 @@ const Signup = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const { signup,profileupdate, signingoogle, signingithub } = useContext(ContextAuth);
     const [signuperror, setSignuperror] = useState('');
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || "/";
 
 
     const Handlesignup = (data) => {
@@ -25,7 +28,7 @@ const Signup = () => {
 
                 profileupdate(infouser)
                     .then(() => {
-                    
+                        navigate(from, { replace: true });
                     }).catch(err => console.log(err));
 
 

@@ -1,29 +1,19 @@
 import React from 'react';
 import handleerror from '../../../Assets/errorhandle.jpg'
-import { useRouteError } from 'react-router-dom';
-import UseContext from '../../../Context/UseContext';
-import app from '../../../Firebase/Firebase.config';
-import { toast } from 'react-toastify';
+import { Link, useRouteError } from 'react-router-dom';
 
 const RouterError = () => {
-    const { logout } = UseContext(app)
     const error = useRouteError();
 
-    const handlelogout = () => {
-        logout()
-            .then(() => {
-                toast.success('Signout successull')
-            }).catch(err => console.log(err));
-    }
     return (
-        <div className=''>
+        <div className='text-center mt-6'>
             <i className='text-center'>{error.statusText || error.message}</i>
-            <div className='flex justify-center'>
-                <img src={handleerror} alt="" />
+            <div className='flex justify-center mt-4'>
+                <img className='rounded-xl' src={handleerror} alt="" />
             </div>
-            <div>
-                <button onClick={handlelogout} className='flex justify-center btn btn-outline'>Sign out</button>
-            </div>
+            {/* <div className='flex justify-center mt-4'>
+                <Link to='/'> <button className='flex justify-center btn btn-outline'>back</button></Link>
+            </div> */}
         </div>
     );
 };

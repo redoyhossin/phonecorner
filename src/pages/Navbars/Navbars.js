@@ -1,24 +1,40 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { ContextAuth } from '../../Context/UseContext';
 
 const Navbars = () => {
+    const { logout, user } = useContext(ContextAuth);
 
-    // const handlelogout = () => {
-    //     logout()
-    //         .then(() => {
-    //             toast.success('Signout successull')
-    //         }).catch(err => console.log(err));
-    // }
+    const logouthandle = () => {
+        logout()
+            .then(() => {
+                toast.success('Signout successull')
+            }).catch(err => console.log(err));
+    }
 
     const navbars = <>
-        <li><Link>Hone</Link></li>
+        <li><Link to='/'>Home</Link></li>
         <li><Link>category</Link></li>
         <li><Link>Advertised</Link></li>
-        <li><Link>Blogs</Link></li>
-        <li><Link>Sign up</Link></li>
-        <li><Link>Sign in</Link></li>
+        <li><Link to='/Blogs'>Blogs</Link></li>
+        {user?.uid ?
+
+            <>
+                <li>
+                    <button onClick={logouthandle} className='btn btn-accent text-primary rounded-full'>Sign out</button>
+                </li>
+            </>
+            :
+            <>
+                <li><Link className='btn btn-accent text-primary rounded-full ' to='/Signin'>Sign in</Link></li>
+            </>
+        }
+
     </>
+
+
+
 
     // const categorynav = <>
 

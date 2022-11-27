@@ -15,7 +15,7 @@ const githubprovider = new GithubAuthProvider();
 
 
 const UseContext = ({ children }) => {
-    const [user, setUser] = useState(null);
+    const [user,setUser] = useState(null);
     const [loddar, setLodder] = useState(true);
 
     const signup = (email, password) => {
