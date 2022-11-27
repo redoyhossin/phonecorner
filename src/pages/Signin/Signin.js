@@ -53,7 +53,7 @@ const Signin = () => {
                     <div>
                         <div className=' flex justify-center items-center '>
                             <div className='w-96 shadow-xl px-6 py-8 rounded-lg'>
-                                <h1 className='text-4xl font-bold text-center'>Login</h1>
+                                <h1 className='text-4xl font-bold text-center'>Sign in</h1>
                                 <form onSubmit={handleSubmit(handlesignin)}>
 
                                     <div className="form-control w-full  mb-2">
@@ -93,7 +93,7 @@ const Signin = () => {
                                         </label>
                                     </div>
 
-                                    <input className='btn btn-accent w-full' value="Login" type="submit" />
+                                    <input className='btn btn-accent w-full' value="Sign in" type="submit" />
                                 </form>
                                 {
                                     signinerror && <p className='text-red-700'> {signinerror} </p>

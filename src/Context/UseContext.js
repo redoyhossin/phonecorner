@@ -42,7 +42,11 @@ const UseContext = ({ children }) => {
         return signInWithPopup(auth, githubprovider);
     };
 
-   
+    const logout = () => {
+        setLodder(true);
+        return signOut(auth);
+    }
+
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
@@ -65,6 +69,7 @@ const UseContext = ({ children }) => {
         loddar,
         signingoogle,
         signingithub,
+        logout,
     }
     return (
         <div>
