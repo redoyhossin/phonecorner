@@ -28,7 +28,7 @@ const Signup = () => {
 
                 profileupdate(infouser)
                     .then(() => {
-                        navigate(from, { replace: true });
+                        navigate(from, { replace: true })
                     }).catch(err => console.log(err));
 
 
@@ -48,6 +48,7 @@ const Signup = () => {
             .then(result => {
                 const user = result.user;
                 toast.success('login success')
+                navigate(from, { replace: true })
             }).catch(error => {
 
                 toast.error(error.message);
@@ -60,6 +61,7 @@ const Signup = () => {
             .then(result => {
                 const user = result.user;
                 toast.success('login success')
+                navigate(from, { replace: true })
             }).catch(error => {
 
                 toast.error(error.message);

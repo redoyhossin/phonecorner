@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Errorhandle from '../Errorhandle/Errorhandle';
 import Main from '../MainLayout/Main';
 import Blogs from '../pages/Blogs/Blogs';
+import Privacy from '../pages/Footer/Privacy/Privacy';
 import Home from '../pages/Mainhome/Home/Home';
 import RouterError from '../pages/Sharedpage/RouterError/RouterError';
 import Signin from '../pages/Signin/Signin';
@@ -31,9 +32,14 @@ const Router = ({ children }) => {
                 {
                     path:'Blogs',
                     element:<Blogs/>
-                }
+                },
+                
                 
             ]
+        },
+        {
+            path: 'Privacy',
+            element:<Privacy/>
         },
         {
             path: '*',

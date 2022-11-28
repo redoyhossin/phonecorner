@@ -23,6 +23,8 @@ const Signin = () => {
                 const user = result.user;
                 toast.success('Sign In successfull')
                 navigate(from, { replace: true })
+
+               
             }).catch(error => {
                 console.log(error.message);
                 setSigninerror(error.message);
@@ -34,6 +36,7 @@ const Signin = () => {
             .then(result => {
                 const user = result.user;
                 toast.success('login success')
+                navigate(from, { replace: true })
             }).catch(error => {
 
                 toast.error(error.message);
