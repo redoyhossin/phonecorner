@@ -4,6 +4,7 @@ import Errorhandle from '../Errorhandle/Errorhandle';
 import Main from '../MainLayout/Main';
 import Blogs from '../pages/Blogs/Blogs';
 import Category from '../pages/collectionCategory/Category/Category';
+import Product from '../pages/collectionCategory/products/Product';
 import Privacy from '../pages/Footer/Privacy/Privacy';
 import Home from '../pages/Mainhome/Home/Home';
 import RouterError from '../pages/Sharedpage/RouterError/RouterError';
@@ -37,6 +38,11 @@ const Router = ({ children }) => {
                 {
                     path: 'Category',
                     element:<Category/>
+                },
+
+                {
+                    path: '/Product/:id',
+                    element:<Product></Product>
                 }
                 
                 
