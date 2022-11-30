@@ -15,7 +15,7 @@ const Navbars = () => {
 
     const navbars = <>
         <li><Link to='/'>Home</Link></li>
-        <li><Link>category</Link></li>
+        <li><Link to='/Category' >Category</Link></li>
         <li><Link>Advertised</Link></li>
         <li><Link to='/Blogs'>Blogs</Link></li>
         {user?.uid ?

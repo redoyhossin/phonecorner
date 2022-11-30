@@ -11,9 +11,9 @@ const RouterError = () => {
             <div className='flex justify-center mt-4'>
                 <img className='rounded-xl' src={handleerror} alt="" />
             </div>
-            {/* <div className='flex justify-center mt-4'>
+            <div className='flex justify-center mt-4'>
                 <Link to='/'> <button className='flex justify-center btn btn-outline'>back</button></Link>
-            </div> */}
+            </div>
         </div>
     );
 };
