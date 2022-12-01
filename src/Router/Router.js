@@ -5,6 +5,7 @@ import Main from '../MainLayout/Main';
 import Blogs from '../pages/Blogs/Blogs';
 import Category from '../pages/collectionCategory/Category/Category';
 import Product from '../pages/collectionCategory/products/Product';
+import Dashboard from '../pages/Dashboard/Dashboard/Dashboard';
 import Privacy from '../pages/Footer/Privacy/Privacy';
 import Home from '../pages/Mainhome/Home/Home';
 import Privateroute from '../pages/privateroute/Privateroute';
@@ -17,7 +18,7 @@ const Router = ({ children }) => {
         {
             path: '/',
             element: <Main />,
-            errorElement:<RouterError/>,
+            errorElement: <RouterError />,
             children: [
                 {
                     path: '/',
@@ -26,39 +27,45 @@ const Router = ({ children }) => {
                 },
                 {
                     path: '/Signup',
-                    element:<Signup/>
+                    element: <Signup />
                 },
                 {
                     path: '/Signin',
-                    element:<Signin/>
+                    element: <Signin />
                 },
                 {
-                    path:'Blogs',
-                    element:<Blogs/>
+                    path: 'Blogs',
+                    element: <Blogs />
                 },
                 {
                     path: 'Category',
-                    element:<Category/>
+                    element: <Category />
                 },
 
                 {
                     path: '/Product/:ProductId',
-                    element:<Privateroute> <Product></Product></Privateroute>,
+                    element: <Privateroute> <Product></Product></Privateroute>,
                     loader: ({ params }) => fetch(`http://localhost:5000/allproducts/${params.ProductId}`),
-                  
+
                 }
-                
-                
+
+
             ]
         },
         {
             path: 'Privacy',
-            element:<Privacy/>
+            element: <Privacy />
         },
         {
             path: '*',
-            element:<Errorhandle/>
+            element: <Errorhandle />
+        },
+
+        {
+            path: '/Dashboard',
+            element: <Dashboard></Dashboard>
         }
+
     ])
     return (
         <div className='container mx-auto px-3'>

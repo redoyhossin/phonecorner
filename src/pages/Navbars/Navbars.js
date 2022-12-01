@@ -21,6 +21,8 @@ const Navbars = () => {
         {user?.uid ?
 
             <>
+
+                <li><Link to='/Dashboard'>Dashboard</Link></li>
                 <li>
                     <button onClick={logouthandle} className='btn btn-accent text-primary rounded-full'>Sign out</button>
                 </li>

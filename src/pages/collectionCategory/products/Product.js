@@ -20,7 +20,8 @@ const Product = () => {
             {
                 productmodal &&
                 <ProductModal
-                    productmodal={productmodal}
+                        productmodal={productmodal}
+                        setProductmodal={setProductmodal}
                 >
                 </ProductModal>}
 
