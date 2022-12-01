@@ -4,6 +4,11 @@ import Shareloddar from '../../shareloddar/Shareloddar';
 import Allproductcart from './allproductcart/Allproductcart';
 
 const Allproduct = () => {
+    let showdate = new Date();
+    
+    let displaytodaysdate = showdate.getDate() + '/' + (showdate.getMonth() + 1) + '/' + showdate.getFullYear();
+    
+    // let displaytodaysdate = showdate.getDate();
 
 
     const { data: allproducts = [], isLoading } = useQuery({
@@ -19,7 +24,7 @@ const Allproduct = () => {
             <h1 className='text-2xl my-6 text-center'>All product here</h1>
             <div className='mb-16 grid lg:grid-cols-3 justify-items-center'>
                 {
-                    allproducts.map(allproduct => <Allproductcart key={allproduct._id} allproduct={allproduct} />)
+                    allproducts.map(allproduct => <Allproductcart key={allproduct._id} displaytodaysdate={displaytodaysdate} allproduct={allproduct} />)
                 }
             </div>
         </div>

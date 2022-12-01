@@ -1,0 +1,17 @@
+[
+    {
+        "categories_id": "1",
+        "categoriesimg": "https://i.ibb.co/8PMFbFs/huawei-logo.webp",
+        "categoriesname": "Huawei"
+    },
+    {
+        "categories_id": "2",
+        "categoriesimg": "https://i.ibb.co/tLPtf9B/iPhone.png",
+        "categoriesname": "iPhone "
+    },
+    {
+        "categories_id": "3",
+        "categoriesimg": "https://i.ibb.co/k5sYfVs/Oppologo.jpg",
+        "categoriesname": "Oppo"
+    }
+] 

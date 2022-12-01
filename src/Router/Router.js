@@ -7,6 +7,7 @@ import Category from '../pages/collectionCategory/Category/Category';
 import Product from '../pages/collectionCategory/products/Product';
 import Privacy from '../pages/Footer/Privacy/Privacy';
 import Home from '../pages/Mainhome/Home/Home';
+import Privateroute from '../pages/privateroute/Privateroute';
 import RouterError from '../pages/Sharedpage/RouterError/RouterError';
 import Signin from '../pages/Signin/Signin';
 import Signup from '../pages/Signup/Signup';
@@ -41,8 +42,10 @@ const Router = ({ children }) => {
                 },
 
                 {
-                    path: '/Product/:id',
-                    element:<Product></Product>
+                    path: '/Product/:ProductId',
+                    element:<Privateroute> <Product></Product></Privateroute>,
+                    loader: ({ params }) => fetch(`http://localhost:5000/allproducts/${params.ProductId}`),
+                  
                 }
                 
                 
