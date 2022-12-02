@@ -72,7 +72,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 ***
 # project name : phone corner
-# live side link : 
+# live side link :  https://assignment-12-d05c7.web.app
 
 ## This site main feature resale  your use product
 ### Tailwind css daisyUi component  useQuery Use this project
@@ -83,5 +83,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 <h3>Use book buy site oder products</h1>
 <h4>Implement login signup with firebase google signin and more github signin</h4>
 
-admin email:
-admin pass:
+admin email: hedilav719@cosaxu.com
+
+admin pass: helloprogram#1
