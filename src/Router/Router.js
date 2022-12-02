@@ -1,6 +1,7 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Errorhandle from '../Errorhandle/Errorhandle';
+import DashboardLayout from '../MainLayout/DashboardLayout';
 import Main from '../MainLayout/Main';
 import Blogs from '../pages/Blogs/Blogs';
 import Category from '../pages/collectionCategory/Category/Category';
@@ -63,7 +64,13 @@ const Router = ({ children }) => {
 
         {
             path: '/Dashboard',
-            element: <Dashboard></Dashboard>
+            element: <Privateroute><DashboardLayout /></Privateroute>,
+            children: [
+                {
+                    path:'/Dashboard',
+                    element:<Dashboard/>
+                }
+            ]
         }
 
     ])

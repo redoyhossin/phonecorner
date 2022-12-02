@@ -1,3 +1,4 @@
+import { data } from 'autoprefixer';
 import React, { useContext } from 'react';
 import { toast } from 'react-toastify';
 import { ContextAuth } from '../../../../Context/UseContext';
@@ -19,17 +20,17 @@ const ProductModal = ({ productmodal, setProductmodal }) => {
     const modalsubmit = (e) => {
         e.preventDefault();
         const form = e.target;
-        const name = form.name.value;
+        const names = form.names.value;
         const email = form.email.value;
         const resale_price = form.resale_price.value;
         const dt = form.dt.value;
         const number = form.number.value;
         const locations = form.locations.value;
-        console.log(location, dt, name, number, resale_price, email)
 
         const booking = {
             dt,
             published_date,
+            email,
             Owneremail,
             product_id,
             oderlocation: locations,
@@ -37,14 +38,26 @@ const ProductModal = ({ productmodal, setProductmodal }) => {
             year_so_fuse,
             time,
             resale_price,
-            name,
-            productname: name
-
+            bookedusername: names,
+            productname: name,
+            number
         }
         console.log(booking)
-        toast.success('booked done')
-        setProductmodal(null);
-      
+        fetch('http://localhost:5000/modalbook', {
+            method: 'POST',
+            headers: {
+                'content-Type': 'application/json'
+            },
+            body: JSON.stringify(booking)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.acknowledged) {
+                    setProductmodal(null);
+                    toast.success('booked done')
+                }
+            })
     }
 
     return (
@@ -57,7 +70,7 @@ const ProductModal = ({ productmodal, setProductmodal }) => {
                     <label htmlFor="my_modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                     <form onSubmit={modalsubmit}>
 
-                        <input name='name' type="text" placeholder="" readOnly defaultValue={user?.displayName} className="input input-bordered w-full  mb-4 mt-1" />
+                        <input name='names' type="text" placeholder="" readOnly defaultValue={user?.displayName} className="input input-bordered w-full  mb-4 mt-1" />
 
                         <input name='email' type="email" placeholder="" readOnly defaultValue={user?.email} className="input input-bordered w-full  mb-4" />
 
@@ -69,7 +82,7 @@ const ProductModal = ({ productmodal, setProductmodal }) => {
 
                         <input name='locations' type="text" required placeholder="location" className="input input-bordered w-full  mb-4" />
 
-                        
+
                         <button className="btn btn-primary w-full">Submit</button>
                     </form>
 

@@ -7,7 +7,7 @@ import { ContextAuth } from '../../Context/UseContext';
 
 const Signup = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const { signup,profileupdate, signingoogle, signingithub } = useContext(ContextAuth);
+    const { signup, profileupdate, signingoogle, signingithub } = useContext(ContextAuth);
     const [signuperror, setSignuperror] = useState('');
     const location = useLocation();
     const navigate = useNavigate();
@@ -28,7 +28,9 @@ const Signup = () => {
 
                 profileupdate(infouser)
                     .then(() => {
-                        navigate(from, { replace: true })
+                        usersave(data.email, data.name)
+
+
                     }).catch(err => console.log(err));
 
 
@@ -42,7 +44,7 @@ const Signup = () => {
 
 
 
-    
+
     const handlegoogle = () => {
         signingoogle()
             .then(result => {
@@ -69,6 +71,35 @@ const Signup = () => {
             })
     }
 
+
+    const usersave = (email, name) => {
+        const user = { email, name };
+        fetch('http://localhost:5000/saveduser', {
+            method: 'POST',
+            headers: {
+                'content-Type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log('user saved', data)
+                userToken(email)
+                //  navigate(from, { replace: true })
+            })
+    }
+
+
+    const userToken = (email) => {
+        fetch(`http://localhost:5000/jwttoken?email=${email}`)
+            .then(res => res.json())
+            .then(data => {
+                if (data.accessToken) {
+                    localStorage.setItem('accessToken', data.accessToken)
+                    navigate(from, { replace: true })
+            }
+        })
+    }
 
     return (
         <div className='my-12'>
