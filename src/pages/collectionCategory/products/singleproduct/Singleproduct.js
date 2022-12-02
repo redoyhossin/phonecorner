@@ -10,15 +10,7 @@ const Singleproduct = ({ setProductmodal }) => {
 
     const productsdata = useLoaderData();
     console.log(productsdata)
-    // const { data: allproducts = [], isLoading } = useQuery({
-    //     queryKey: ['Allproduct'],
-    //     queryFn: () => fetch('http://localhost:5000/allproduct/${id}')
-    //         .then(res => res.json())
-    // })
-    // if (isLoading) {
-    //     return <Shareloddar />
-    // }
-
+   
 
     return (
         <div className='mb-16 grid lg:grid-cols-3 justify-items-center'>

@@ -9,7 +9,7 @@ const Homecategory = () => {
 
 
     useEffect(() => {
-        axios.get('http://localhost:5000/allproductcategories')
+        axios.get('https://assignment-12-server-nine.vercel.app/allproductcategories')
             .then(data => {
                 const loadcategory = data.data;
                 setcategory(loadcategory);

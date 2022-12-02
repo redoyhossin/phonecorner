@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
+import Adminhooks from '../addminehooks/Adminhooks';
+import { ContextAuth } from '../Context/UseContext';
 import Navbars from '../pages/Navbars/Navbars';
 
 const DashboardLayout = () => {
+    const { user } = useContext(ContextAuth);
+    const [isAdmin]=Adminhooks(user?.email)
+
     return (
-        <div>
+        <div className='mx-4'>
             <Navbars />
 
             <div className="drawer drawer-mobile drawer-end">
@@ -17,8 +22,16 @@ const DashboardLayout = () => {
                     <ul className="menu p-4 w-80 bg-base-100 text-base-content">
 
                         <li><Link to='/Dashboard'>My Oders</Link></li>
-                        <li><Link to='/Dashboard/Allusers'>All Users</Link></li>
-                        
+                        <li><Link to='/Dashboard/Addproduct'>Add product</Link></li>
+
+                       
+                        {
+                            isAdmin && <>
+                                <li><Link to='/Dashboard/Allusers'>All Users</Link></li>
+                                
+                            </>
+                        }
+
                     </ul>
                 </div>
             </div>

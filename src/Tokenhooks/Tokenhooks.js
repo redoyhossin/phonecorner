@@ -7,7 +7,7 @@ const Tokenhooks = email => {
 
     useEffect(() => {
         if (email) {
-            fetch(`http://localhost:5000/jwttoken?email=${email}`)
+            fetch(`https://assignment-12-server-nine.vercel.app/jwttoken?email=${email}`)
                 .then(res => res.json())
                 .then(data => {
                     if (data.accessToken) {

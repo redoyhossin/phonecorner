@@ -13,7 +13,7 @@ const Allproduct = () => {
 
     const { data: allproducts = [], isLoading } = useQuery({
         queryKey: ['Allproduct'],
-        queryFn: () => fetch('http://localhost:5000/allproduct')
+        queryFn: () => fetch('https://assignment-12-server-nine.vercel.app/allproduct')
             .then(res => res.json())
     })
     if (isLoading) {

@@ -14,12 +14,12 @@ const Signup = () => {
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || "/";
 
-    // const [usercreate, setUsercreate] = useState('');
-    // const [tokens] = Tokenhooks(usercreate)
+    const [usercreate, setUsercreate] = useState('');
+    const [tokens] = Tokenhooks(usercreate)
 
-    // if (tokens) {
-    //     navigate(from, { replace: true })
-    // }
+    if (tokens) {
+        navigate(from, { replace: true })
+    }
 
     const Handlesignup = (data) => {
         setSignuperror('');
@@ -48,7 +48,10 @@ const Signup = () => {
                 error(error.message);
             })
     };
-
+    const seller = (e) => {
+        const valu = e.value;
+        console.log(valu)
+    }
 
 
 
@@ -81,7 +84,7 @@ const Signup = () => {
 
     const usersave = (email, name) => {
         const user = { email, name };
-        fetch('http://localhost:5000/saveduser', {
+        fetch('https://assignment-12-server-nine.vercel.app/saveduser', {
             method: 'POST',
             headers: {
                 'content-Type': 'application/json'
@@ -91,7 +94,7 @@ const Signup = () => {
             .then(res => res.json())
             .then(data => {
                 console.log('user saved', data)
-                // setUsercreate(email)
+                setUsercreate(email)
                 // userToken(email)
                 //  navigate(from, { replace: true })
             })
@@ -118,11 +121,25 @@ const Signup = () => {
                     <div className="text-center lg:text-left">
                         <img src={signups} alt="" />
                     </div>
+
+
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl ">
                         <div className=' flex justify-center items-center '>
                             <div className='w-96 shadow-xl px-6 py-8 rounded-lg'>
                                 <h1 className='text-4xl font-bold text-center'>Sign up</h1>
                                 <form onSubmit={handleSubmit(Handlesignup)}>
+
+                                    <label onClick={seller} htmlFor="Toggle1" className="inline-flex items-center space-x-4 cursor-pointer dark:te">
+                                        <span>Left</span>
+                                        <span className="relative">
+                                            <input  id="Toggle1" type="checkbox" className="hidden peer" />
+                                            <div className="w-10 h-6 rounded-full shadow-inner bg-black ">
+
+                                            </div>
+                                            <div className="absolute inset-y-0 left-0 w-4 h-4 m-1 rounded-full shadow peer-checked:right-0 peer-checked:left-auto bg-slate-300"></div>
+                                        </span>
+                                        <span>Right</span>
+                                    </label>
 
                                     <div className="form-control w-full  mb-2">
                                         <label className="label">
@@ -150,6 +167,7 @@ const Signup = () => {
                                             className="input input-bordered w-full " type="text" />
                                         {errors.Username && <p className='text-red-600' role="alert">{errors.Username?.message}</p>}
                                     </div>
+
 
 
                                     <div className="form-control w-full  mb-2">

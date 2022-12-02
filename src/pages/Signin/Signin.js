@@ -14,7 +14,7 @@ const Signin = () => {
 
     // const [signintoken, setSignintoken] = useState('');
     // const [tokens] = Tokenhooks(signintoken)
-    
+
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
@@ -31,9 +31,9 @@ const Signin = () => {
                 const user = result.user;
                 toast.success('Sign In successfull')
                 // setSignintoken(data.email)
+                // navigate(from, { replace: true })
                 navigate(from, { replace: true })
 
-               
             }).catch(error => {
                 console.log(error.message);
                 setSigninerror(error.message);

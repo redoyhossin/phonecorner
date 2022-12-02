@@ -5,7 +5,7 @@ import { ContextAuth } from '../../../Context/UseContext';
 const Myoders = () => {
     const { user } = useContext(ContextAuth);
 
-    const url = `http://localhost:5000/modalbook?email=${user?.email}`
+    const url = `https://assignment-12-server-nine.vercel.app/modalbook?email=${user?.email}`
 
     const { data: modalbook = [] } = useQuery({
         queryKey: ['modalbook', user?.email],

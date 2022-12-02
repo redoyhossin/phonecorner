@@ -6,11 +6,13 @@ import Main from '../MainLayout/Main';
 import Blogs from '../pages/Blogs/Blogs';
 import Category from '../pages/collectionCategory/Category/Category';
 import Product from '../pages/collectionCategory/products/Product';
+import Addproduct from '../pages/Dashboard/addproduct/Addproduct';
 import Allusers from '../pages/Dashboard/Allusers/Allusers';
 import Dashboard from '../pages/Dashboard/Dashboard/Dashboard';
 import Myoders from '../pages/Dashboard/Myoder/Myoders';
 import Privacy from '../pages/Footer/Privacy/Privacy';
 import Home from '../pages/Mainhome/Home/Home';
+import Adminprivate from '../pages/privateroute/Adminprivate/Adminprivate';
 import Privateroute from '../pages/privateroute/Privateroute';
 import RouterError from '../pages/Sharedpage/RouterError/RouterError';
 import Signin from '../pages/Signin/Signin';
@@ -48,7 +50,7 @@ const Router = ({ children }) => {
                 {
                     path: '/Product/:ProductId',
                     element: <Privateroute> <Product></Product></Privateroute>,
-                    loader: ({ params }) => fetch(`http://localhost:5000/allproducts/${params.ProductId}`),
+                    loader: ({ params }) => fetch(`https://assignment-12-server-nine.vercel.app/allproducts/${params.ProductId}`),
 
                 }
 
@@ -74,14 +76,18 @@ const Router = ({ children }) => {
                 },
                 {
                     path: '/Dashboard/Allusers',
-                    element:<Allusers/>
+                    element:<Adminprivate><Allusers/></Adminprivate>
+                },
+                {
+                    path: '/Dashboard/Addproduct',
+                    element:<Addproduct/>
                 }
             ]
         }
 
     ])
     return (
-        <div className='container mx-auto px-3'>
+        <div >
             <RouterProvider router={router}>
                 {children}
             </RouterProvider>

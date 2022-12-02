@@ -43,7 +43,7 @@ const ProductModal = ({ productmodal, setProductmodal }) => {
             number
         }
         console.log(booking)
-        fetch('http://localhost:5000/modalbook', {
+        fetch('https://assignment-12-server-nine.vercel.app/modalbook', {
             method: 'POST',
             headers: {
                 'content-Type': 'application/json'

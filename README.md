@@ -69,3 +69,19 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 # b612-used-products-resale-clients-side-redoyhossin
+
+***
+# project name : phone corner
+# live side link : 
+
+## This site main feature resale  your use product
+### Tailwind css daisyUi component  useQuery Use this project
+### Page site admin said  user said seller side
+
+<h1>single page  application   use this web site mongodb data base  and store data this web site use products resale market And extra feature</h1> <p>And buy productsThis is realy good </p>
+<h2>Admin see all side Bt seller see hos host  product  side</h2>
+<h3>Use book buy site oder products</h1>
+<h4>Implement login signup with firebase google signin and more github signin</h4>
+
+admin email:
+admin pass:
