@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import signups from '../../Assets/Form/signup.jpg'
 import { ContextAuth } from '../../Context/UseContext';
+import Tokenhooks from '../../Tokenhooks/Tokenhooks';
 
 const Signup = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -13,6 +14,12 @@ const Signup = () => {
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || "/";
 
+    // const [usercreate, setUsercreate] = useState('');
+    // const [tokens] = Tokenhooks(usercreate)
+
+    // if (tokens) {
+    //     navigate(from, { replace: true })
+    // }
 
     const Handlesignup = (data) => {
         setSignuperror('');
@@ -84,22 +91,23 @@ const Signup = () => {
             .then(res => res.json())
             .then(data => {
                 console.log('user saved', data)
-                userToken(email)
+                // setUsercreate(email)
+                // userToken(email)
                 //  navigate(from, { replace: true })
             })
     }
 
 
-    const userToken = (email) => {
-        fetch(`http://localhost:5000/jwttoken?email=${email}`)
-            .then(res => res.json())
-            .then(data => {
-                if (data.accessToken) {
-                    localStorage.setItem('accessToken', data.accessToken)
-                    navigate(from, { replace: true })
-            }
-        })
-    }
+    // const userToken = (email) => {
+    //     fetch(`http://localhost:5000/jwttoken?email=${email}`)
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             if (data.accessToken) {
+    //                 localStorage.setItem('accessToken',data.accessToken)
+    //                 navigate(from, { replace: true })
+    //         }
+    //     })
+    // }
 
     return (
         <div className='my-12'>

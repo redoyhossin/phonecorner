@@ -5,16 +5,24 @@ import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { ContextAuth } from '../../Context/UseContext';
+import Tokenhooks from '../../Tokenhooks/Tokenhooks';
 
 const Signin = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const { signin, signingoogle } = useContext(ContextAuth);
     const [signinerror, setSigninerror] = useState('');
+
+    // const [signintoken, setSignintoken] = useState('');
+    // const [tokens] = Tokenhooks(signintoken)
+    
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
 
 
+    // if (tokens) {
+    //     navigate(from, { replace: true })
+    // }
 
     const handlesignin = (data) => {
         setSigninerror('');
@@ -22,6 +30,7 @@ const Signin = () => {
             .then(result => {
                 const user = result.user;
                 toast.success('Sign In successfull')
+                // setSignintoken(data.email)
                 navigate(from, { replace: true })
 
                

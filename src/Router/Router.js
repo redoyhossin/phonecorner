@@ -6,7 +6,9 @@ import Main from '../MainLayout/Main';
 import Blogs from '../pages/Blogs/Blogs';
 import Category from '../pages/collectionCategory/Category/Category';
 import Product from '../pages/collectionCategory/products/Product';
+import Allusers from '../pages/Dashboard/Allusers/Allusers';
 import Dashboard from '../pages/Dashboard/Dashboard/Dashboard';
+import Myoders from '../pages/Dashboard/Myoder/Myoders';
 import Privacy from '../pages/Footer/Privacy/Privacy';
 import Home from '../pages/Mainhome/Home/Home';
 import Privateroute from '../pages/privateroute/Privateroute';
@@ -68,7 +70,11 @@ const Router = ({ children }) => {
             children: [
                 {
                     path:'/Dashboard',
-                    element:<Dashboard/>
+                    element:<Myoders/>
+                },
+                {
+                    path: '/Dashboard/Allusers',
+                    element:<Allusers/>
                 }
             ]
         }
